@@ -58,7 +58,7 @@ function LoginForm() {
              Email
             </Form.Label>
             <Col sm={4}>
-            <Form.Control type="email" id="email" value={emailValue} onChange={emailChange}/>
+            <Form.Control type="email" id="email" value={emailValue} onChange={emailChange} autoComplete='off'/>
             </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
@@ -66,7 +66,7 @@ function LoginForm() {
              Password
             </Form.Label>
             <Col sm={4}>
-            <Form.Control type="password" id="password" value={passwordValue} onChange={passwordChange}/><br/>
+            <Form.Control type="password" id="password" value={passwordValue} onChange={passwordChange} autoComplete='off'/><br/>
             </Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3">
