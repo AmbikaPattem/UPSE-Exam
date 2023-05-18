@@ -16,7 +16,7 @@ function EmailVerification() {
      
     const verify= async()=>{
         try{
-            const response=await fetch(`http://test.e-prathibha.com/apis/verifyEmail`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/verifyEmail`,
             {method:"POST",
             headers: {
                 "Content-Type": "application/json",

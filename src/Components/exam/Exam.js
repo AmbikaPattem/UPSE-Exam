@@ -5,6 +5,7 @@ import './exam.css'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 //import axios from 'axios';
 
 import {Link} from 'react-router-dom';
@@ -23,7 +24,7 @@ function Exam() {
     const [questionIndex, setQuestionIndex] = useState(0);
     const getFreeExam= async()=>{
         try{
-            const response=await fetch(`http://test.e-prathibha.com/apis/test_free_exam`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/test_free_exam`,
             {
             method:"POST",
             headers: {
@@ -56,7 +57,7 @@ function Exam() {
     const examLoad = async(id) => {
       try{
         // const response=await fetch(`http://test.e-prathibha.com/apis/start_exam?examId=`+id,
-        const response=await fetch(`http://test.e-prathibha.com/apis/start_exam?examId=24`,
+        const response=await fetch(`https://test.e-prathibha.com/apis/start_exam?examId=24`,
         {
         method:"GET",
         headers: {
@@ -97,7 +98,7 @@ function Exam() {
       console.log(questionObj);
       setSelected_option('');
       try{
-        const response=await fetch(`http://test.e-prathibha.com/apis/bookmark_ques`,{
+        const response=await fetch(`https://test.e-prathibha.com/apis/bookmark_ques`,{
         method:"POST",
         headers:{
           "Content-Type": "application/json",
@@ -122,7 +123,7 @@ function Exam() {
 
       try
       {
-        const response=await fetch(`http://test.e-prathibha.com/apis/save_ques`,{
+        const response=await fetch(`https://test.e-prathibha.com/apis/save_ques`,{
           method:"POST",
           headers:{
             "Content-Type": "application/json",
@@ -150,7 +151,7 @@ function Exam() {
     }
     const finishExam = async(id) => {
       try{
-        const response=await fetch(`http://test.e-prathibha.com/apis/finishExam`,
+        const response=await fetch(`https://test.e-prathibha.com/apis/finishExam`,
         {
         method:"POST",
         headers: {
@@ -175,12 +176,16 @@ function Exam() {
         console.log(error);
     }
     }
+    const logout=()=>{
+      nav('/');
+    }
     
   return (
     <div>
     <div style={{paddingLeft:'1000px',border:'1px solid black',backgroundColor:'blue',height:'50px',paddingTop:'5px'}}>
         <Link to="/packages" style={{color:'white'}}>Packages</Link>&nbsp;&nbsp;
-        <Link to='/transactions' style={{color:'white'}}>Transactions</Link> 
+        <Link to='/transactions' style={{color:'white'}}>Transactions</Link> &nbsp;&nbsp;
+        <Button varient="primary" onClick={()=>logout()}>Logout</Button>
     </div>
     <br/>
     <div className='scroll'>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import './transaction.css';
 import Table from 'react-bootstrap/Table';
@@ -9,11 +10,12 @@ function Transactions() {
     let paymentId;
     const [transaction,setTransaction]=useState([]);
     const [viewTransaction,setViewTransaction]=useState([])
+    const [final,setFinal]=useState(false);
     const transactions=async()=>
     {
         try
         {
-            const response=await fetch(`http://test.e-prathibha.com/apis/transactions`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/transactions`,
         {
         method:"POST",
         headers: {
@@ -43,7 +45,7 @@ function Transactions() {
       //let paymentId=transaction[0].Payment.id;
         try
         {
-            const response=await fetch(`http://test.e-prathibha.com/apis/view_transaction`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/view_transaction`,
         {
         method:"POST",
         headers: {
@@ -66,12 +68,19 @@ function Transactions() {
     }
     
     const homePage=()=>{
-      nav('/');
+      nav('/exam');
     }
+    useEffect(()=>{
+      transactions();
+    },[])
   return (
     <div>
+       <div style={{textAlign:'right'}}>
+        <Link to='/exam'>HomePage</Link>
+        </div>
         <div style={{textAlign:'center',margin:'25px'}}>
-        <Button variant="primary" onClick={transactions}>Transactions</Button>
+        {/* <Button variant="primary" onClick={transactions}>Transactions</Button> */}
+        <div onLoad={()=>{transactions()}}></div>
         </div>
         <div className="main" >
         <div className="transaction">

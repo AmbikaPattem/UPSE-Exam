@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function ResultPage() {
     {
       
         try{
-            const response=await fetch(`http://test.e-prathibha.com/apis/my_result`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/my_result`,
             {
             method:"POST",
             headers: {
@@ -52,7 +52,7 @@ function ResultPage() {
     {
       try{
         const examresult=localStorage.getItem('examResultId')
-        const response=await fetch(`http://test.e-prathibha.com/apis/exam_result`,
+        const response=await fetch(`https://test.e-prathibha.com/apis/exam_result`,
         {
         method:"POST",
         headers: {
@@ -79,17 +79,21 @@ function ResultPage() {
       setResultdata(false);
       //nav('/');
     }
+    useEffect(()=>{examResult();},[])
   return (
     <div>
       <div style={{textAlign:'right'}}>
+        <button onClick={myResult}>MyResult</button>&nbsp;
       <Link to='/exam'>Home Page</Link>
       </div>
-      <div style={{paddingLeft:'5px', textAlign:'center'}}>
+      {/* <div style={{paddingLeft:'5px', textAlign:'right'}}>
         
-        <button onClick={myResult}>MyResult</button>&nbsp;
-        <button onClick={examResult}>ExamResult</button>
         
-        </div><br/>
+        </div><br/> */}
+        {/* <button onClick={examResult}>ExamResult</button> */}
+        <div onLoad={()=>examResult} style={{paddingLeft:'5px', textAlign:'center'}}> <h5>Result</h5></div>
+        
+        
         
       {/* <div> */}
         {

@@ -35,7 +35,7 @@ function Registration() {
     }
     const getRegisterData= async()=>{
         try{
-            const response=await fetch(`http://test.e-prathibha.com/apis/register`,
+            const response=await fetch(`https://test.e-prathibha.com/apis/register`,
             {method:"POST",
             headers: {
                 "Content-Type": "application/json",

@@ -13,7 +13,7 @@ function Packages() {
   const getPackageData = async () => {
     try {
       const response = await fetch(
-        `http://test.e-prathibha.com/apis/packageDetails`,
+        `https://test.e-prathibha.com/apis/packageDetails`,
         {
           method: "POST",
           headers: {
@@ -82,7 +82,7 @@ function Packages() {
         year: option == "499.00" ? "" : 1,
       };
       const response = await fetch(
-        `http://test.e-prathibha.com/apis/test_paymentGateway`,
+        `https://test.e-prathibha.com/apis/test_paymentGateway`,
         {
           method: "POST",
           headers: {
@@ -104,7 +104,7 @@ function Packages() {
   };
   const paymentResponse = async (a) => {
     try {
-      const response = await fetch(`http://test.e-prathibha.com/apis/success`, {
+      const response = await fetch(`https://test.e-prathibha.com/apis/success`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,11 +128,19 @@ function Packages() {
   const backToLoginPage=()=>{
     nav('/exam');
   }
+  useEffect(()=>{
+    getPackageData();
+  },[]);
   return (
+    <div>
+      <div style={{textAlign:'right'}}>
+        <Link to='/exam'>HomePage</Link>
+      </div>
     <div style={{textAlign:'center'}}>
       {!orderMessage ? (
         <div>
-          <Button variant="info" onClick={() => getPackageData()}>Packages</Button><br/>
+          {/* <Button variant="info" onClick={() => getPackageData()}>Packages</Button><br/> */}
+          <div onLoad={()=>{getPackageData();}}></div>
           {data && data.data ? (
             <div>
               {
@@ -162,7 +170,9 @@ function Packages() {
       )}
       {/* <Link to='/transactions'>Transactions</Link> */}
     </div>
+    </div>
   );
+ 
 }
 
 export default Packages;

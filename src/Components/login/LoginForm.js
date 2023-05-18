@@ -25,7 +25,7 @@ function LoginForm() {
     const getData= async()=>{
         try{
             
-              const response=await fetch(`http://test.e-prathibha.com/apis/login`,
+              const response=await fetch(`https://test.e-prathibha.com/apis/login`,
             {method:"POST",
             headers: {
                 "Content-Type": "application/json",
